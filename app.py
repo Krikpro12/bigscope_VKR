@@ -16,8 +16,8 @@ def add_header(response):
     return response
 # Подключение к MongoDB
 try:
-    client = MongoClient('localhost', 27017)
-    db = client['VKR1']
+    client = MongoClient("mongodb+srv://krikpro12:fawd1HFW5Y8Rj8xN@vkr.nsfiu.mongodb.net/?retryWrites=true&w=majority&appName=VKR")
+    db = client['VKR']
     articles_collection = db['research_paper']
     topics_collection = db['LDA_results']
     client.admin.command('ping')  # Проверка подключения
