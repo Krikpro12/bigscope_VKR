@@ -301,5 +301,6 @@ def generate_wordcloud():
 
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 5000))  # Использует переменную PORT от Render или 5000 по умолчанию
+    app.run(host="0.0.0.0", port=port)
