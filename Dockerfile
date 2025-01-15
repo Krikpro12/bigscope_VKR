@@ -1,10 +1,10 @@
-# Используем базовый образ Python
+# Используем Python базовый образ
 FROM python:3.9-slim
 
 # Устанавливаем рабочую директорию
 WORKDIR /app
 
-# Устанавливаем системные библиотеки
+# Устанавливаем системные зависимости
 RUN apt-get update && apt-get install -y \
     build-essential \
     libssl-dev \
@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
     zlib1g-dev \
     && apt-get clean
 
-# Копируем файлы проекта
+# Копируем проект
 COPY . .
 
 # Устанавливаем зависимости
