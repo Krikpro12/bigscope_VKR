@@ -4,17 +4,23 @@ FROM python:3.9-slim
 # Устанавливаем рабочую директорию
 WORKDIR /app
 
-# Копируем файл зависимостей
-COPY requirements.txt requirements.txt
+# Устанавливаем системные библиотеки
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libssl-dev \
+    libffi-dev \
+    zlib1g-dev \
+    && apt-get clean
 
-# Устанавливаем зависимости
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Копируем проект
+# Копируем файлы проекта
 COPY . .
 
-# Указываем порт
-EXPOSE 8000
+# Устанавливаем зависимости
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Команда для запуска приложения
+# Экспортируем порт
+EXPOSE 5000
+
+# Запуск приложения
 CMD ["python", "app.py"]
