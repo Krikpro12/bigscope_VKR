@@ -3,3 +3,5 @@ pymongo
 gensim
 gunicorn
 sklearn
+wordcloud
+os
